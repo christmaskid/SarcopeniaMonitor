@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,7 +89,6 @@ if DEBUG:
     }
 
 else: # in production
-    import os
     # Set default values for the environment variables if they’re not already set
     os.environ.setdefault("PGDATABASE", "app_sqp")
     os.environ.setdefault("PGUSER", "user")
