@@ -90,7 +90,7 @@ if DEBUG:
 
 else: # in production
     # Set default values for the environment variables if they’re not already set
-    os.environ.setdefault("PGDATABASE", "app_sqp")
+    os.environ.setdefault("PGDATABASE", "app_sql")
     os.environ.setdefault("PGUSER", "user")
     os.environ.setdefault("PGPASSWORD", "user")
     os.environ.setdefault("PGHOST", "localhost")
@@ -124,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+CSRF_TRUSTED_ORIGINS = ['https://web-production-b8b9.up.railway.app/']
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
