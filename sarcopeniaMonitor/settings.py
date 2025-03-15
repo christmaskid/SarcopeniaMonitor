@@ -90,20 +90,20 @@ if DEBUG:
 
 else: # in production
     # Set default values for the environment variables if they’re not already set
-    os.environ.setdefault("PGDATABASE", "app_sql")
-    os.environ.setdefault("PGUSER", "user")
-    os.environ.setdefault("PGPASSWORD", "user")
-    os.environ.setdefault("PGHOST", "localhost")
-    os.environ.setdefault("PGPORT", "8000")
+    os.environ.setdefault("Postgres.PGDATABASE", "app_sql")
+    os.environ.setdefault("Postgres.PGUSER", "user")
+    os.environ.setdefault("Postgres.PGPASSWORD", "user")
+    os.environ.setdefault("Postgres.PGHOST", "localhost")
+    os.environ.setdefault("Postgres.PGPORT", "8000")
 
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ["PGDATABASE"],
-            'USER': os.environ["PGUSER"],
-            'PASSWORD': os.environ["PGPASSWORD"],
-            'HOST': os.environ["PGHOST"],
-            'PORT': os.environ["PGPORT"],
+            'NAME': os.environ["Postgres.PGDATABASE"],
+            'USER': os.environ["Postgres.PGUSER"],
+            'PASSWORD': os.environ["Postgres.PGPASSWORD"],
+            'HOST': os.environ["Postgres.PGHOST"],
+            'PORT': os.environ["Postgres.PGPORT"],
         }
     }
 
