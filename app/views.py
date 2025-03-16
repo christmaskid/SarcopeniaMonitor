@@ -6,6 +6,7 @@ from .serializers import UserRecordSerializer
 class UserRecordViewSet(viewsets.ModelViewSet):
     queryset = UserRecord.objects.all()
     serializer_class = UserRecordSerializer
+    lookup_field = 'recordID'
     # permission_classes = [permissions.IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
@@ -31,3 +32,18 @@ class UserRecordViewSet(viewsets.ModelViewSet):
     def update(self, request, *args, **kwargs):
         print("Update Request", request.data)
         return super().update(request, *args, **kwargs)
+
+    # def update(self, request, record_id):
+    #     print("Update Request", request.data)
+    #     try:
+    #         record = UserRecord.objects.get(pk=record_id)
+    #     except UserRecord.DoesNotExist:
+    #         return Response({"error": "Record not found"}, status=404)
+
+    #     serializer = self.get_serializer(record, data=request.data, partial=True)
+        
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     else:
+    #         return Response(serializer.errors, status=400)
