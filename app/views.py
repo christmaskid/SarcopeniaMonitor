@@ -29,21 +29,18 @@ class UserRecordViewSet(viewsets.ModelViewSet):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
+    # def update(self, request, *args, **kwargs):
+    #     print("Update Request", request.data)
+    #     return super().update(request, *args, **kwargs)
+
     def update(self, request, *args, **kwargs):
         print("Update Request", request.data)
-        return super().update(request, *args, **kwargs)
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
 
-    # def update(self, request, record_id):
-    #     print("Update Request", request.data)
-    #     try:
-    #         record = UserRecord.objects.get(pk=record_id)
-    #     except UserRecord.DoesNotExist:
-    #         return Response({"error": "Record not found"}, status=404)
-
-    #     serializer = self.get_serializer(record, data=request.data, partial=True)
-        
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     else:
-    #         return Response(serializer.errors, status=400)
+        if serializer.is_valid():
+            serializer.save()  # 🔥 Ensure changes are saved to the database
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
