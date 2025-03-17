@@ -6,7 +6,7 @@ from .serializers import UserRecordSerializer
 class UserRecordViewSet(viewsets.ModelViewSet):
     queryset = UserRecord.objects.all()
     serializer_class = UserRecordSerializer
-    lookup_field = 'recordID'
+    lookup_field = 'pk'
     # permission_classes = [permissions.IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
