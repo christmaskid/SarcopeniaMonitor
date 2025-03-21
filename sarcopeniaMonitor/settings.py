@@ -98,19 +98,13 @@ if DEBUG:
     }
 
 # to sync up:
-# 1. railway run python manage --exclude contenttypes > data.json
+# 1. railway run python manage.py dumpdata --exclude contenttypes > data.json
 # 2. git pull 
 # so that the data.json is sync in local machine now.
-# 3. python manage loaddata < data.json
+# 3. python manage.py loaddata < data.json
 
 else: # in production
     # Set default values for the environment variables if they’re not already set
-    os.environ.setdefault("Postgres.PGDATABASE", "app_sql")
-    os.environ.setdefault("Postgres.PGUSER", "user")
-    os.environ.setdefault("Postgres.PGPASSWORD", "user")
-    os.environ.setdefault("Postgres.PGHOST", "localhost")
-    os.environ.setdefault("Postgres.PGPORT", "8000")
-
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
