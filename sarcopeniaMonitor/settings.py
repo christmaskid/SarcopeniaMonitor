@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#ynonhe!p3py32w_z_2hm-qk!my*bmcwb-%mbmqe=upwr&vmj@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #False
+DEBUG = False # True
 # DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 ALLOWED_HOSTS = [
@@ -105,14 +105,20 @@ if DEBUG:
 
 else: # in production
     # Set default values for the environment variables if they’re not already set
+    os.environ.setdefault("Postgres.PGDATABASE", "railway")
+    os.environ.setdefault("Postgres.PGUSER", "postgres")
+    os.environ.setdefault("Postgres.PGPASSWORD", "kuCnEXzPOGaBeqJjaNQUEtBBpHeBAryu")
+    os.environ.setdefault("Postgres.PGHOST", "postgres.railway.internal")
+    os.environ.setdefault("Postgres.PGPORT", "5432")
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ["PGDATABASE"],
-            'USER': os.environ["PGUSER"],
-            'PASSWORD': os.environ["PGPASSWORD"],
-            'HOST': os.environ["PGHOST"],
-            'PORT': os.environ["PGPORT"],
+            'NAME': os.environ["Postgres.PGDATABASE"],
+            'USER': os.environ["Postgres.PGUSER"],
+            'PASSWORD': os.environ["Postgres.PGPASSWORD"],
+            'HOST': os.environ["Postgres.PGHOST"],
+            'PORT': os.environ["Postgres.PGPORT"],
         }
     }
 
