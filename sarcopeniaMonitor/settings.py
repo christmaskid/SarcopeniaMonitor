@@ -108,11 +108,11 @@ else: # in production
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ["Postgres.PGDATABASE"],
-            'USER': os.environ["Postgres.PGUSER"],
-            'PASSWORD': os.environ["Postgres.PGPASSWORD"],
-            'HOST': os.environ["Postgres.PGHOST"],
-            'PORT': os.environ["Postgres.PGPORT"],
+            'NAME': os.environ["PGDATABASE"],
+            'USER': os.environ["PGUSER"],
+            'PASSWORD': os.environ["PGPASSWORD"],
+            'HOST': os.environ["PGHOST"],
+            'PORT': os.environ["PGPORT"],
         }
     }
 
