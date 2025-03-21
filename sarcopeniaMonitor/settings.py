@@ -24,7 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#ynonhe!p3py32w_z_2hm-qk!my*bmcwb-%mbmqe=upwr&vmj@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # False #
+DEBUG = False
+# DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 ALLOWED_HOSTS = [
     '*', 
@@ -95,6 +96,12 @@ if DEBUG:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
+# to sync up:
+# 1. railway run python manage --exclude contenttypes > data.json
+# 2. git pull 
+# so that the data.json is sync in local machine now.
+# 3. python manage loaddata < data.json
 
 else: # in production
     # Set default values for the environment variables if they’re not already set
