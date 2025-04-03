@@ -37,3 +37,7 @@ class Prediction(models.Model):
     # gripStrengthData = models.FloatField(blank=True, null=True)
     gaitSpeedData = models.FloatField(blank=True, null=True)
     standUpData = models.FloatField(blank=True, null=True)
+
+class MealImage(models.Model):
+    image = models.ImageField(upload_to='meal_images/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)

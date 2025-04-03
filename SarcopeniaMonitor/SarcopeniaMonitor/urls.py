@@ -16,16 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
 from rest_framework.routers import DefaultRouter
 from app.views import UserRecordViewSet, QuestionnaireViewSet, PhysicalTestViewSet, PredictionViewSet
+from django.conf.urls.static import static
 
 router = DefaultRouter()
 router.register(r'user-records', UserRecordViewSet)
-router.register(r'questionnaires', QuestionnaireViewSet)
+router.register(r'questionnaires', QuestionnaireViewSet, basename='questionnaire')
 router.register(r'physical-tests', PhysicalTestViewSet)
-router.register(r'predictions', PredictionViewSet)
+router.register(r'predictions', PredictionViewSet, basename='prediction')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('app/', include(router.urls)),
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]
