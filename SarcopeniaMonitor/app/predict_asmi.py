@@ -23,7 +23,7 @@ def predict_asmi(user_record, questionnaire):
     print("input: {}".format(questionnaire), flush=True)
 
     # Calculate age dynamically
-    age = user_record.calculate_age()
+    age = questionnaire.calculate_age()
 
     # Derived variables
     age_weight_interaction = age * user_record.weight

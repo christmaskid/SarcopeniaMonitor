@@ -13,18 +13,6 @@ class UserRecord(models.Model):
     dbp = models.FloatField(blank=True, null=True)
     mealImages = models.JSONField(default=list, blank=True)  # Store meal images as a list of objects
 
-    def calculate_age(self):
-        """
-        Calculate the age of the user based on the birthDate in the related Questionnaire.
-        """
-        questionnaire = Questionnaire.objects.filter(id=self.recordID).first()
-        if questionnaire and questionnaire.birthDate:
-            today = date.today()
-            return today.year - questionnaire.birthDate.year - (
-                (today.month, today.day) < (questionnaire.birthDate.month, questionnaire.birthDate.day)
-            )
-        return None
-
     def get_meal_image_uris(self):
         """
         Return a list of URIs for all associated meal images.
@@ -45,11 +33,23 @@ class Questionnaire(models.Model):
     d2 = models.IntegerField(blank=True, null=True)
     d3 = models.IntegerField(blank=True, null=True)
     e1 = models.IntegerField(blank=True, null=True)
-    meal_status = models.IntegerField(blank=True, null=True)
+    # meal_status = models.IntegerField(blank=True, null=True)
+
+    def calculate_age(self):
+        """
+        Calculate the age of the user based on the birthDate.
+        """
+        if self.birthDate:
+            today = date.today()
+            return today.year - self.birthDate.year - (
+                (today.month, today.day) < (self.birthDate.month, self.birthDate.day)
+            )
+        return None
 
 class PhysicalTest(models.Model):
     gripStrengthData = models.FloatField(blank=True, null=True)
     gaitSpeedData = models.FloatField(blank=True, null=True)
+    standUpData = models.FloatField(blank=True, null=True)
 
 class Prediction(models.Model):
     asmiPrediction = models.FloatField(blank=True, null=True)

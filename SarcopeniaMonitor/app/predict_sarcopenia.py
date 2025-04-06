@@ -49,7 +49,7 @@ def predict_sarcopenia(user_record, questionnaire, physical_test):
     print("input: {}".format(physical_test), flush=True)
 
     # Calculate age dynamically
-    age = user_record.calculate_age()
+    age = questionnaire.calculate_age()
 
     # Extract physical test data
     walk_data = physical_test.gaitSpeedData
