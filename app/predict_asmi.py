@@ -1,11 +1,18 @@
 import pickle
+import pandas as pd
 import numpy as np
 from .models import UserRecord, Questionnaire, PhysicalTest, Prediction
+from sklearn.impute import SimpleImputer
 
 # Load the pre-trained DXA model
 DXA_MODEL_PATH = "checkpoints/DXA_best_ridge_model.pkl"
+SCALER_PATH = "checkpoints/asmi_scaler.pkl"
+
 with open(DXA_MODEL_PATH, "rb") as f:
     dxa_model = pickle.load(f)
+
+with open(SCALER_PATH, "rb") as f:
+    scaler = pickle.load(f)
 
 def predict_asmi(user_record, questionnaire):
     """
@@ -30,8 +37,24 @@ def predict_asmi(user_record, questionnaire):
     gender_nutrition_interaction = questionnaire.gender * questionnaire.c15
     body_condition_score = (user_record.bmi * 0.4) + (user_record.weight * 0.3) + (user_record.height * 0.3)
 
-    # Extract required fields in the correct order
-    features = [
+    # Create DataFrame for input features
+    column_names = [
+        "年齡",
+        "體重",
+        "BMI",
+        "身高",
+        "過去7天中等費力活動一天幾分鐘",
+        "過去7天費力活動一天幾分鐘",
+        "舒張壓",
+        "收縮壓",
+        "性別",
+        "自我評估營養狀況",
+        "做事花很大力氣",
+        "無法啟動做什麼事",
+        "age_weight_interaction", "gender_nutrition_interaction", "body_condition_score"
+    ]
+
+    values = [[
         age,
         user_record.weight,
         user_record.bmi,
@@ -46,14 +69,24 @@ def predict_asmi(user_record, questionnaire):
         questionnaire.a2_2,
         age_weight_interaction,
         gender_nutrition_interaction,
-        body_condition_score,
-    ]
-    
-    # Convert features to a NumPy array and reshape for the model
-    features = np.array(features).reshape(1, -1)
+        body_condition_score
+    ]]
+
+    input_df = pd.DataFrame(values, columns=column_names)
+    print("Input DataFrame (before scaling):\n", input_df, flush=True)
+
+    # Scale the input
+    scaled_features = pd.DataFrame(scaler.transform(input_df))
+    print("Scaled features:\n", scaled_features, flush=True)
+    # Handle missing values by filling with the median (for a single row)
+    for column in scaled_features.columns:
+        if scaled_features[column].isnull().any():
+            median_value = scaled_features[column].median()
+            scaled_features[column].fillna(median_value, inplace=True)
+    print("Scaled features:\n", scaled_features, flush=True)
     
     # Make prediction
-    asmi_prediction = dxa_model.predict(features)[0]
+    asmi_prediction = dxa_model.predict(scaled_features)[0]
 
     print("Finish predicting ASMI", flush=True)
     print("ASMI prediction: {}".format(asmi_prediction), flush=True)

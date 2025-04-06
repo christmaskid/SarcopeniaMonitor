@@ -9,8 +9,9 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.decorators import api_view, parser_classes
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
-from .predict_asmi import generate_asmi_prediction
-from .predict_sarcopenia import generate_sarcopenia_prediction
+# from .predict_asmi import generate_asmi_prediction
+# from .predict_sarcopenia import generate_sarcopenia_prediction
+from .predict_all import generate_full_prediction
 
 class UserRecordViewSet(viewsets.ModelViewSet):
     queryset = UserRecord.objects.all()
@@ -102,7 +103,7 @@ class QuestionnaireViewSet(viewsets.ModelViewSet):
 
     mapping = {
             "birthDate": lambda x: x.replace("/", "-") if isinstance(x, str) else None,  # Ensure date is in string format
-            "gender": {0: 0, 1: 1, 2: 0.5}, # Female, Male, Not applicable
+            "gender": {0: 1, 1: 0, 2: 0.5}, # Female, Male, Not applicable
             "smoking": {0: 0, 1: 1, 2: 2}, # Never, Sometimes, Frequent
             "a2_1": {0:0, 1:1, 2:2, 3:3},
             "a2_2": {0:0, 1:1, 2:2, 3:3},
@@ -206,10 +207,12 @@ class PredictionViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'], url_path='latest')
     def latest(self, request):
         # Trigger ASMI and sarcopenia predictions before fetching the latest prediction
-        generate_asmi_prediction()
-        generate_sarcopenia_prediction()
+        # generate_asmi_prediction()
+        # generate_sarcopenia_prediction()
+        generate_full_prediction()
         latest_entry = Prediction.objects.order_by('-id').first()
         if latest_entry:
             serializer = self.get_serializer(latest_entry)
+            print("Latest prediction:", serializer.data, flush=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({"error": "No prediction found"}, status=status.HTTP_404_NOT_FOUND)
