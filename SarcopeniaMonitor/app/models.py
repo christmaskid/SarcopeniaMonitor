@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
+from datetime import date
 
 class UserRecord(models.Model):
     recordID = models.BigAutoField(primary_key=True)
@@ -9,6 +11,25 @@ class UserRecord(models.Model):
     bmi = models.FloatField(blank=True, null=True)
     sbp = models.FloatField(blank=True, null=True)
     dbp = models.FloatField(blank=True, null=True)
+    mealImages = models.JSONField(default=list, blank=True)  # Store meal images as a list of objects
+
+    def calculate_age(self):
+        """
+        Calculate the age of the user based on the birthDate in the related Questionnaire.
+        """
+        questionnaire = Questionnaire.objects.filter(id=self.recordID).first()
+        if questionnaire and questionnaire.birthDate:
+            today = date.today()
+            return today.year - questionnaire.birthDate.year - (
+                (today.month, today.day) < (questionnaire.birthDate.month, questionnaire.birthDate.day)
+            )
+        return None
+
+    def get_meal_image_uris(self):
+        """
+        Return a list of URIs for all associated meal images.
+        """
+        return [meal_image['image_uri'] for meal_image in self.meal_images]
 
 class Questionnaire(models.Model):
     birthDate = models.DateField(blank=True, null=True)
@@ -34,10 +55,5 @@ class Prediction(models.Model):
     asmiPrediction = models.FloatField(blank=True, null=True)
     handGripPrediction = models.FloatField(blank=True, null=True)
     sarcopeniaStatus = models.IntegerField(blank=True, null=True)
-    # gripStrengthData = models.FloatField(blank=True, null=True)
     gaitSpeedData = models.FloatField(blank=True, null=True)
     standUpData = models.FloatField(blank=True, null=True)
-
-class MealImage(models.Model):
-    image = models.ImageField(upload_to='meal_images/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)

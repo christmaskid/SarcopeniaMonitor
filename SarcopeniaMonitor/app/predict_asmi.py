@@ -18,9 +18,21 @@ def predict_asmi(user_record, questionnaire):
     Returns:
         float: The predicted ASMI value.
     """
-    # Extract required fields
+    print("Predict ASMI...", flush=True)
+    print("input: {}".format(user_record), flush=True)
+    print("input: {}".format(questionnaire), flush=True)
+
+    # Calculate age dynamically
+    age = user_record.calculate_age()
+
+    # Derived variables
+    age_weight_interaction = age * user_record.weight
+    gender_nutrition_interaction = questionnaire.gender * questionnaire.c15
+    body_condition_score = (user_record.bmi * 0.4) + (user_record.weight * 0.3) + (user_record.height * 0.3)
+
+    # Extract required fields in the correct order
     features = [
-        user_record.age,
+        age,
         user_record.weight,
         user_record.bmi,
         user_record.height,
@@ -32,6 +44,9 @@ def predict_asmi(user_record, questionnaire):
         questionnaire.c15,
         questionnaire.a2_1,
         questionnaire.a2_2,
+        age_weight_interaction,
+        gender_nutrition_interaction,
+        body_condition_score,
     ]
     
     # Convert features to a NumPy array and reshape for the model
@@ -39,12 +54,19 @@ def predict_asmi(user_record, questionnaire):
     
     # Make prediction
     asmi_prediction = dxa_model.predict(features)[0]
+
+    print("Finish predicting ASMI", flush=True)
+    print("ASMI prediction: {}".format(asmi_prediction), flush=True)
     return asmi_prediction
 
 def generate_asmi_prediction():
     """
     Generate and save ASMI prediction for the latest UserRecord and Questionnaire.
     """
+    # Check if UserRecord and Questionnaire data exist
+    if not UserRecord.objects.exists() or not Questionnaire.objects.exists():
+        return  # Do nothing if data is missing
+
     # Get the latest UserRecord and Questionnaire
     user_record = UserRecord.objects.latest('recordID')
     questionnaire = Questionnaire.objects.latest('id')

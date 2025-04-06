@@ -1,29 +1,22 @@
 from rest_framework import serializers
-from .models import UserRecord, Questionnaire, PhysicalTest, Prediction, MealImage
-
-class MealImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MealImage
-        fields = ['id', 'image', 'uploaded_at']
+from .models import UserRecord, Questionnaire, PhysicalTest, Prediction
 
 class UserRecordSerializer(serializers.ModelSerializer):
-    meal_images = MealImageSerializer(many=True, read_only=True)
-
     class Meta:
         model = UserRecord
-        fields = '__all__'  # Include all fields
+        fields = '__all__'
 
 class QuestionnaireSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questionnaire
-        fields = '__all__'  # Include all fields
+        fields = '__all__'
 
 class PhysicalTestSerializer(serializers.ModelSerializer):
     class Meta:
         model = PhysicalTest
-        fields = '__all__'  # Include all fields
+        fields = '__all__'
 
 class PredictionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prediction
-        fields = '__all__'  # Include all fields
+        fields = '__all__'

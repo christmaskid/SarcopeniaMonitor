@@ -1,0 +1,329 @@
+<resources>
+    <string name="app_name">SarcopeniaMonitor</string>
+    <string name="user_name">User Name</string>
+
+<!--    <string name="age_format">Age: %d (y/o)</string>-->
+<!--    <string name="age_item">Age</string>-->
+
+    <string name="height_format">Height: %.1f cm</string>
+    <string name="weight_format">Weight: %.1f kg</string>
+    <string name="bmi_format">BMI: %.2f</string>
+    <string name="height_item">Height (cm)</string>
+    <string name="weight_item">Weight (kg)</string>
+    <string name="bmi_item">BMI (kg/m^2)</string>
+
+    <string name="datetime_format">%s %s</string>
+    <string name="date_item">Date (yyyy/MM/dd)</string>
+    <string name="time_item">Time (HH:mm)</string>
+
+    <string name="bp_format">Blood pressure: %.0f / %.0f</string>
+    <string name="sbp_item">Systolic blood pressure (mmHg)</string>
+    <string name="dbp_item">Diastolic blood pressure (mmHg)</string>
+
+    <string name="default_format">%s</string>
+    <string name="default_item">%s</string>
+
+    <string name="date_btn">Date</string>
+    <string name="time_btn">Time</string>
+
+    <string name="add_new_record">A new record added</string>
+    <string name="create_btn">Create</string>
+    <string name="submit_btn">Submit</string>
+    <string name="input_default">Enter here</string>
+
+    <!-- Questionnaire Resources -->
+
+    <string name="gender_description">Gender</string>
+    <string-array name="gender_options">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Not applicable</item>
+    </string-array>
+
+    <string name="birthDate">Birth Date (yyyy/MM/dd)</string>
+
+    <!-- Smoking -->
+    <string name="smoking_description">吸菸習慣</string>
+    <string-array name="smoking_options">
+        <item>不吸菸</item>
+        <item>偶爾吸菸</item>
+        <item>經常吸菸</item>
+    </string-array>
+<!--    <string name="smoking_description">Smoking:</string>-->
+<!--    <string-array name="smoking_options">-->
+<!--        <item>Do not smoke</item>-->
+<!--        <item>Occasionally smoke (e.g., social or business-related situations)</item>-->
+<!--        <item>Frequently smoke (almost every day)</item>-->
+<!--    </string-array>-->
+
+    <!-- A2 -->
+<!--    <string name="a2_description">我感到活動費力，例如：我覺得我做的每一件事都花很大的力氣、或我沒有辦法起動做什麼事情</string>-->
+<!--    <string name="a2_description">-->
+<!--        I feel that physical activities are strenuous. For example, feeling that every task you do requires a great deal of effort, or being unable to initiate any activity.-->
+<!--    </string>-->
+<!--    <string-array name="a2_options">-->
+<!--        <item>Yes</item>-->
+<!--        <item>No</item>-->
+<!--    </string-array>-->
+    <string name="a2_1_description">
+        我覺得我做的每一件事都花很大的力氣
+    </string>
+    <string-array name="a2_1_options">
+        <item>很少或沒有</item>
+        <item>有一點（1–2天）</item>
+        <item>中度（3–4天）</item>
+        <item>大部分時間</item>
+    </string-array>
+
+    <string name="a2_2_description">
+        我沒有辦法起動做什麼事情
+    </string>
+    <string-array name="a2_2_options">
+        <item>很少或沒有</item>
+        <item>有一點（1–2天）</item>
+        <item>中度（3–4天）</item>
+        <item>大部分時間</item>
+    </string-array>
+    <!-- A3 -->
+<!--    <string name="a3_1_description">每周活動消耗熱量：（大卡）{input}</string>-->
+<!--    <string name="a3_1_description">-->
+<!--        Weekly caloric expenditure from physical activities: (kcal) {input}-->
+<!--    </string>-->
+<!--    <string-array name="a3_1_options">-->
+<!--        <item>unknown</item>-->
+<!--        <item>少於500 kcal</item>-->
+<!--        <item>500-1000 kcal</item>-->
+<!--        <item>1000-1500 kcal</item>-->
+<!--        <item>超過1500 kcal</item>-->
+<!--    </string-array>-->
+
+    <string name="b1_2_description">
+            費力 activities refer to activities that take moderate physical effort and make you breathe somewhat harder than normal,
+        like (TODO).{description}
+            During the last 7 days, have you engaged in 費力 activities?
+            If so, how much time did you usually spend on one of those days?{input}
+    </string>
+
+    <string-array name="b1_2_options">
+        <item>unknown</item>
+    </string-array>
+
+    <!-- B2 -->
+<!--    <string name="b2_description">過去七天中，您是否有從事中等費力的活動？</string>-->
+<!--    <string name="b2_description">-->
+<!--        Moderate activities refer to activities that take moderate physical effort and make you breathe somewhat harder than normal,-->
+<!--    like gardening, cleaning, bicycling at a regular pace, swimming or other fitness activities.{description}-->
+<!--        During the last 7 days, have you engaged in moderate physical activities?-->
+<!--    </string>-->
+<!--    <string-array name="b2_options">-->
+<!--        <item>Yes</item>-->
+<!--        <item>No</item>-->
+<!--    </string-array>-->
+
+    <!-- B2.1 -->
+<!--    <string name="b2_1_description">過去七天中，您從事中等費力的活動多少天？{input}</string>-->
+<!--        <string name="b2_1_description">-->
+<!--            During the last 7 days, on how many days did you do moderate physical activities?-->
+<!--            (Think only about those physical activities that you did for at least 10 minutes at a time.-->
+<!--            (Do not include walking.){input}-->
+<!--        </string>-->
+<!--    <string-array name="b2_1_options">-->
+<!--        <item>unknown</item>-->
+<!--    </string-array>-->
+
+    <!-- B2.2 -->
+<!--    <string name="b2_2_description">過去七天中，您從事中等費力的活動每天幾分鐘？{input}</string>-->
+    <string name="b2_2_description">
+            Moderate activities refer to activities that take moderate physical effort and make you breathe somewhat harder than normal,
+        like gardening, cleaning, bicycling at a regular pace, swimming or other fitness activities.{description}
+
+            During the last 7 days, have you engaged in moderate activities?
+            If so, how much time did you usually spend on one of those days?{input}
+    </string>
+
+    <string-array name="b2_2_options">
+        <item>unknown</item>
+    </string-array>
+
+        <!-- B4.2 -->
+<!--    <string name="b4_2_description">-->
+<!--        過去七天中，您從事不太費力的活動每天約幾分鐘？{input}-->
+<!--    </string>-->
+<!--    <string-array name="b4_2_options">-->
+<!--        <item>unknown</item>-->
+<!--    </string-array>-->
+    <string name="b9_description">
+<!--            臨床衰弱量表等級{input}-->
+        Clinical frail index level{input}
+    </string>
+
+    <string-array name="b9_options">
+        <item>unknown</item>
+    </string-array>
+    <!-- C2 -->
+<!--    <string name="c2_description">近三個月體重變化：</string>-->
+<!--    <string name="c2_description">Weight change in the past three months:</string>-->
+<!--    <string-array name="c2_options">-->
+<!--        <item>No change</item>-->
+<!--        <item>Decrease by 1~3kg</item>-->
+<!--        <item>Decrease by 3kg</item>-->
+<!--        <item>Unknown</item>-->
+<!--    </string-array>-->
+
+    <!-- C11 -->
+<!--    <string name="c11_description">每天蛋白質攝取量</string>-->
+<!--    <string name="c11_description">Daily protein intake: (7 grams as a serving)</string>-->
+<!--    <string-array name="c11_options">-->
+<!--        <item>0 servings</item>-->
+<!--        <item>0.5 servings</item>-->
+<!--        <item>1.0 servings</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="c11_1_description">每天至少攝取一份乳製品</string>-->
+<!--    <string-array name="c11_1_options">-->
+<!--        <item>Yes</item>-->
+<!--        <item>No</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="c11_2_description">每周攝取兩份以上的豆類或蛋類</string>-->
+<!--    <string-array name="c11_2_options">-->
+<!--        <item>Yes</item>-->
+<!--        <item>No</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="c11_3_description">每天均吃些肉、魚、雞、鴨類</string>-->
+<!--    <string-array name="c11_3_options">-->
+<!--        <item>Yes</item>-->
+<!--        <item>No</item>-->
+<!--    </string-array>-->
+
+    <string name="c15_description">自我評估營養狀況</string>
+    <string-array name="c15_options">
+        <item>自覺營養不良</item>
+        <item>不清楚</item>
+        <item>自覺沒有營養問題</item>
+    </string-array>
+
+    <string name="d1_description">行動能力</string>
+    <string-array name="d1_options">
+        <item>我可以四處走動</item>
+        <item>我行動有些不便</item>
+        <item>我臥病在床</item>
+    </string-array>
+
+    <string name="d2_description">自我照顧</string>
+    <string-array name="d2_options">
+        <item>我能照顧自己，沒有任何問題</item>
+        <item>我在盥洗、洗澡或穿衣方面有些問題</item>
+        <item>我無法自己盥洗、洗澡或穿衣</item>
+    </string-array>
+
+    <string name="d3_description">平常活動（如工作、讀書、家事、家庭或休閒活動）</string>
+    <string-array name="d3_options">
+        <item>我能從事平常活動，沒有任何問題</item>
+        <item>我在從事平常活動方面有些問題</item>
+        <item>我無法從事平常活動</item>
+    </string-array>
+    <!-- E1 -->
+        <string name="e1_description">我的吞嚥問題，令我體重下降</string>
+<!--        <string name="e1_description">My swallowing difficulties causes my weight loss.</string>-->
+        <string-array name="e1_options">
+                <item>沒有</item>
+                <item>很少</item>
+                <item>偶爾</item>
+                <item>經常</item>
+                <item>每天發生</item>
+<!--            <item>Never</item>-->
+<!--            <item>Rarely</item>-->
+<!--            <item>Occasionally</item>-->
+<!--            <item>Frequently</item>-->
+<!--            <item>Daily</item>-->
+        </string-array>
+
+    <!-- E2 -->
+<!--    <string name="e2_description">我的吞嚥問題，影響我外出用餐</string>-->
+<!--    <string name="e2_description">My swallowing difficulties affect my ability to dine out.</string>-->
+<!--    <string-array name="e2_options">-->
+<!--        <item>沒有</item>-->
+<!--        <item>很少</item>-->
+<!--        <item>偶爾</item>-->
+<!--        <item>經常</item>-->
+<!--        <item>每天發生</item>-->
+<!--        <item>Never</item>-->
+<!--        <item>Rarely</item>-->
+<!--        <item>Occasionally</item>-->
+<!--        <item>Frequently</item>-->
+<!--        <item>Daily</item>-->
+<!--    </string-array>-->
+
+    <!-- E4 -->
+<!--    <string name="e4_description">進食固體食物比較費勁(例如：飯)</string>-->
+<!--    <string name="e4_description">-->
+<!--        I find it more difficult to eat solid food (e.g., rice)-->
+<!--    </string>-->
+<!--    <string-array name="e4_options">-->
+<!--        <item>沒有</item>-->
+<!--        <item>很少</item>-->
+<!--        <item>偶爾</item>-->
+<!--        <item>經常</item>-->
+<!--        <item>每天發生</item>-->
+<!--        <item>Never</item>-->
+<!--        <item>Rarely</item>-->
+<!--        <item>Occasionally</item>-->
+<!--        <item>Frequently</item>-->
+<!--        <item>Daily</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="e11_description">吞嚥總分</string>-->
+<!--    <string-array name="e11_options">-->
+<!--        <item>unknown</item>-->
+<!--    </string-array>-->
+
+<!--    <string name="g10_description">過去，您在遇到急難情況時，曾經得到的經濟支持或解決實際問題的幫助來源有：</string>-->
+<!--    <string-array name="g10_options">-->
+<!--        <item>配偶</item>-->
+<!--        <item>親戚</item>-->
+<!--        <item>其他家人</item>-->
+<!--        <item>朋友</item>-->
+<!--        <item>同事</item>-->
+<!--        <item>工作單位</item>-->
+<!--        <item>官方或半官方組織</item>-->
+<!--        <item>宗教社會團體等非官方組織</item>-->
+<!--        <item>其他</item>-->
+<!--    </string-array>-->
+
+    <!-- A3 Question -->
+<!--    <string name="ad8_a3_description">是否會重複問同樣的問題，或重複述說過去的事件</string>-->
+<!--    <string name="ad8_a3_description">-->
+<!--        Have you been repeating the same things over and over? (including questions, stories, statements or past memories)-->
+<!--    </string>-->
+<!--    <string-array name="ad8_a3_options">-->
+<!--        <item>Yes</item>-->
+<!--        <item>No</item>-->
+<!--    </string-array>-->
+
+    <string name="meal_status_description">平時用餐質地</string>
+    <string-array name="meal_status_options">
+        <item>唾液誤嚥</item>
+        <item>食物誤嚥</item>
+        <item>水分誤嚥</item>
+        <item>間中誤嚥</item>
+        <item>口腔問題</item>
+        <item>輕度問題</item>
+        <item>正常</item>
+    </string-array>
+
+
+    <!-- Unknown -->
+    <string name="unknown_description">Unknown</string>
+    <string-array name="unknown_options">
+        <item>unknown</item>
+    </string-array>
+
+
+    <string name="profile_image">Profile image</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_gender">Gender</string>
+
+    <string name="property_label">%1$s</string>
+</resources>
